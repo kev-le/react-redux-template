@@ -1,8 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import logo from '../../logo.svg';
 import './App.css';
 
-function App() {
+const App = (props) => {
   return (
     <div className="App">
       <header className="App-header">
@@ -23,4 +25,18 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = ({ }) => ({
+
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+    },
+    dispatch
+  )
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
