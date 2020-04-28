@@ -1,37 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import logo from '../../logo.svg';
+import { Link } from 'react-router-dom'
+import { getAdvice } from '../../actions/advice'
 import './App.css';
 
-const App = (props) => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount = () => {
+    // only get advice if advice text is empty
+    if (this.props.advice === "") {
+      this.props.getAdvice()
+    }
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello!</h1>
+        <p>Advice of the day:</p>
+        <p><b>{this.props.advice}</b></p>
+
+        <br></br>
+
+        <Link to='/another'>Go to Another Page</Link>
+
+        <br></br>
+
+        <button onClick={() => this.props.getAdvice()}>Generate new Advice</button>
+      </div>
+    )
+  }
 }
 
-const mapStateToProps = ({ }) => ({
-
+const mapStateToProps = ({ advice }) => ({
+  advice: advice.text
 })
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
+      getAdvice
     },
     dispatch
   )
