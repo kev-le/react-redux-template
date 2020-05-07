@@ -1,4 +1,4 @@
-import React, {Component, Button} from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push, goBack } from 'connected-react-router'
