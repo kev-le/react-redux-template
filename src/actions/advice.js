@@ -13,7 +13,6 @@ export const getAdvice = () => {
 
         // start api call to get payload
         return axios.get('https://api.adviceslip.com/advice').then(res => {
-            console.log(res)
             dispatch({
                 type: GET_ADVICE_SUCCESS,
                 payload: res.data.slip.advice
